@@ -2,35 +2,34 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import useStyles from './styles'
+import { PostCard,Categories,PostWidget} from '../components'
 
-
-const posts=[
-{  title:'React Testing', excerpt: ' Lorem Lipsum'},
-{  title:'TailWind Testing', excerpt: ' Lorem Lipsum Donor'},
-];
-
-
+const posts = [
+  { title: 'React Testing', excerpt: ' Lorem Lipsum' },
+  { title: 'TailWind Testing', excerpt: ' Lorem Lipsum Donor' },
+]
 
 const Home: NextPage = () => {
-  const classes=useStyles();
+  const classes = useStyles()
   return (
-    <div className="container mx-auto px-10 mb-8 ">
+    <div className="container mx-auto mb-8 px-10 ">
       <Head>
         <title>AIDS Blog</title>
-        <link rel="icon" href="/favicon.ico" /> 
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div >
-      {
-        posts.map((post,index)=>(
-          <div>
-            {post.title}
-            {post.excerpt}
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+        <div className="col-span-1 lg:col-span-8">
+          {posts.map((post, index) => (
+          <PostCard post={post} key={post.title}/>
+          ))}
+        </div>
+        <div className="col-span-1 lg:col-span-4">
+          <div className="relative top-8 lg:sticky">
+              <PostWidget/>
+              <Categories/>
           </div>
-        ))}
-    </div>
-    <div className="lg:col-span-4 col-span-1">
-          <h1 className="text-3xl font-bold underline">Hello Tailwind</h1>
-    </div>
+        </div>
+      </div>
     </div>
   )
 }
