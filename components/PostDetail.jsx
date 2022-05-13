@@ -29,9 +29,9 @@ const PostDetail = ({ post }) => {
       case 'heading-two':
         return <h2 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h2>;
       case 'heading-one':
-        return <h1 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1>;
+        return <div className='bg-gradient-to-r from-gray-200 to to-gray-100  rounded-xl p-2 pb-0'><h1 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1></div>;
       case 'paragraph':
-        return <p key={index} className="mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
+        return <p key={index} className="mb-8 bg-gray-100 rounded-lg p-2">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
       case 'image':
         return (
           <img
@@ -40,14 +40,35 @@ const PostDetail = ({ post }) => {
             height={obj.height}
             width={obj.width}
             src={obj.src}
+            className='bg-gray-100 rounded-3xl m-4 p-4'
           />
         );
         case 'code-block':
-          return <pre className='bg-[#090E24] rounded-xl overflow-auto scrollbar-thin scrollbar-thumb-blue-700 '><div className='p-8'><code key={index} className="text-md font-semibold mb-4  text-[#d9f99d]">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</code></div></pre>;
-        case 'code': 
-          return <pre className='color-#090E24 '><code key={index} className="text-md font-semibold mb-4  text-white">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</code></pre>;
+          return (
+            <div className="overflow-x rounded-2xl bg-gray-900 pt-2 m-4">
+              <div className='flex flex-row '>
+
+              <div className="bg-red-500 m-2 p-2  rounded-full w-2"></div>
+              <div className="bg-yellow-500 m-2 p-2 rounded-full w-2"></div>
+              <div className="bg-green-500 m-2 p-2 rounded-full w-2"></div>
+              </div>
+              <pre className="overflow-auto rounded-xl bg-gradient-to-b from-gray-900 to-gray-600  scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+                <div className="p-8 ">
+                  <code
+                    key={index}
+                    className="text-md mb-4 text-white"
+                  >
+                    {modifiedText.map((item, i) => (
+                      <React.Fragment key={i}>{item}</React.Fragment>
+                    ))}
+                  </code>
+                </div>
+              </pre>
+            </div>
+          )
+        
         case 'block-quote':
-          return <blockquote key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</blockquote>;
+          return <div className='flex flex-row'><div className='p-1 m-1 rounded-lg bg-red-200'></div><h1 key={index} className="text-lg p-1 font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1></div>;
 
       
       default:
