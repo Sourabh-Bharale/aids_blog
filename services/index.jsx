@@ -17,7 +17,69 @@ export const getPosts = async () => {
                 url
               }
             }
+<<<<<<< HEAD
             createdAt
+=======
+          }
+        }
+      }
+    `;
+  
+    const result = await request(graphqlAPI, query);
+  
+    return result.postsConnection.edges;
+  };
+  
+
+  export const getRecentPosts = async () => {
+    const query = gql`
+      query GetPostDetails() {
+        posts(
+          orderBy: createdAt_ASC
+          last: 3
+        ) {
+          title
+          featuredImage {
+            url
+          }
+          createdAt
+          slug
+        }
+      }
+    `;
+    const result = await request(graphqlAPI, query);
+  
+    return result.posts;
+  };
+
+  export const getSimilarPosts = async (categories, slug) => {
+    const query = gql`
+      query GetPostDetails($slug: String!, $categories: [String!]) {
+        posts(
+          where: {slug_not: $slug, AND: {categories_some: {slug_in: $categories}}}
+          last: 3
+        ) {
+          title
+          featuredImage {
+            url
+          }
+          createdAt
+          slug
+        }
+      }
+    `;
+    const result = await request(graphqlAPI, query, { slug, categories });
+  
+    return result.posts;
+  };
+  
+
+  export const getCategories = async () => {
+    const query = gql`
+      query GetCategories {
+          categories {
+            name
+>>>>>>> 43c0789214ea5b0f15a7ef02b768431b5b9a670d
             slug
             title
             excerpt
@@ -31,6 +93,7 @@ export const getPosts = async () => {
           }
         }
       }
+<<<<<<< HEAD
     }
   `;
 
@@ -254,3 +317,41 @@ export const getRecentPosts = async () => {
 
   return result.posts;
 };
+=======
+    `;
+  
+    const result = await request(graphqlAPI, query, { slug });
+  
+    return result.post;
+  };
+
+
+  export const submitComment = async (obj) => {
+    const result =await fetch('/api/comments',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(obj),
+    })
+
+    return result.json();
+  }
+
+
+  export const getComments = async (slug) => {
+    const query = gql`
+      query GetComments($slug: String!) {
+          comments(where: { post: { slug: $slug } } ){
+            name
+            createdAt
+            comment
+          }
+      }
+    `;
+  
+    const result = await request(graphqlAPI, query,{ slug });
+  
+    return result.comments;
+  };
+>>>>>>> 43c0789214ea5b0f15a7ef02b768431b5b9a670d
