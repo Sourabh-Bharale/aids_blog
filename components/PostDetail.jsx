@@ -1,6 +1,7 @@
 import React from 'react';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import moment from 'moment';
+import Image from 'next/image';
 
 
 const PostDetail = ({ post }) => {
@@ -31,7 +32,7 @@ const PostDetail = ({ post }) => {
       case 'heading-one':
         return <div className='bg-gradient-to-r from-gray-200 to to-gray-100  rounded-xl p-2 pb-0'><h1 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1></div>;
       case 'paragraph':
-        return <p key={index} className="mb-8 bg-gray-100 rounded-lg p-2">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
+        return <p key={index} className="mb-8  rounded-lg p-2">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
       case 'image':
         return (
           <img
@@ -40,7 +41,7 @@ const PostDetail = ({ post }) => {
             height={obj.height}
             width={obj.width}
             src={obj.src}
-            className='bg-gray-100 rounded-3xl m-4 p-4'
+            className='p-4'
           />
         );
         case 'code-block':
@@ -78,40 +79,65 @@ const PostDetail = ({ post }) => {
 
   return (
     <>
-      <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
-        <div className="relative overflow-hidden shadow-md mb-6">
-          <img src={post.featuredImage.url} alt="" className="object-top h-full w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg" />
-        </div>
-        <div className="px-4 lg:px-0">
-          <div className="flex items-center mb-8 w-full">
-            <div className="hidden md:flex  justify-center lg:mb-0 lg:w-auto mr-8 items-center">
-              <img
-                alt={post.author.name}
-                height="30px"
-                width="30px"
-                className="align-middle rounded-full"
-                src={post.author.photo.url}
-              />
-              <p className="inline align-middle text-gray-700 ml-2 font-medium text-lg">{post.author.name}</p>
-            </div>
-            <div className="font-medium text-gray-700">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline mr-2 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <span className="align-middle">{moment(post.createdAt).format('MMM DD, YYYY')}</span>
+      <div className="">
+        <div className="flex flex-row ">
+          <Image
+            unoptimized
+            width="50px"
+            height="50px"
+            src={post.author.photo.url}
+            alt={post.author.name}
+            className="rounded-full "
+            objectFit="fill"
+          />
+          <div className="ml-4 flex flex-row">
+            <div className="m-2 rounded-xl bg-blue-300 pl-1"></div>
+            <div>
+              <h1 className="text-xl font-semibold text-gray-900">
+                {post.author.name}
+              </h1>
+              <div className="flex flex-row">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-2 inline h-4 w-4 text-gray-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+                <span className="text-sm text-gray-500">
+                  {moment(post.createdAt).fromNow()}
+                </span>
+              </div>
             </div>
           </div>
-          <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
-          {post.content.raw.children.map((typeObj, index) => {
+        </div>
+        <div className="mt-8 ">
+          <h1 className="text-3xl font-semibold text-gray-900">{post.title}</h1>
+        </div>
+        <div className="mb-6 overflow-hidden ">
+          <img
+            src={post.featuredImage.url}
+            alt={post.title}
+            className="h-full w-full rounded-t-lg object-cover  object-top shadow-lg lg:rounded-lg"
+          />
+        </div>
+        <div className="bg-white rounded-xl">
+        {post.content.raw.children.map((typeObj, index) => {
             const children = typeObj.children.map((item, itemindex) => getContentFragment(itemindex, item.text, item));
 
             return getContentFragment(index, children, typeObj, typeObj.type);
           })}
         </div>
       </div>
-
     </>
-  );
+  )
 };
 
 export default PostDetail;
