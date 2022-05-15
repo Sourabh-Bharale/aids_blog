@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import '../styles/globals.css'
 import '../styles/index.scss'
+import '../components/styles/commentsForm.css'
 import { Layout } from '../components'
 import type { AppProps } from 'next/app'
 

@@ -79,7 +79,7 @@ const PostDetail = ({ post }) => {
 
   return (
     <>
-      <div className="">
+      <div className="lg:ml-20">
         <div className="flex flex-row ">
           <Image
             unoptimized
@@ -125,7 +125,7 @@ const PostDetail = ({ post }) => {
           <img
             src={post.featuredImage.url}
             alt={post.title}
-            className="h-full w-full rounded-t-lg object-cover  object-top shadow-lg lg:rounded-lg"
+            className="h-full w-full rounded-t-lg object-cover  object-top lg:rounded-lg"
           />
         </div>
         <div className="bg-white rounded-xl">
@@ -135,6 +135,11 @@ const PostDetail = ({ post }) => {
             return getContentFragment(index, children, typeObj, typeObj.type);
           })}
         </div>
+      </div>
+      <div className="flex flex-row justify-center">
+        <div className="p-1 bg-gray-700 ml-4 rounded-full"></div>
+        <div className="p-1 bg-gray-500 ml-4 rounded-full"></div>
+        <div className="p-1 bg-gray-300 ml-4 rounded-full"></div>
       </div>
     </>
   )

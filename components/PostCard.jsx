@@ -7,9 +7,9 @@ import Categories from './Categories';
 import { graphCMSImageLoader } from '../util';
 
 const PostCard = ({ post }) => (
-
-  <div className="  bg-white  rounded-xl  ">
-    <div className="flex flex-row  border-t-2  pt-8 pb-2">
+ 
+  <div className="mt-4 ml-0 mr-0 lg:m-8 lg:mt-4 p-2  card rounded-xl sm:shadow-sm shadow-lg  shadow-gray-500 ">
+    <div className="flex flex-row  pt-8 pb-2">
       <Image
         unoptimized
         loader={graphCMSImageLoader}
@@ -21,11 +21,11 @@ const PostCard = ({ post }) => (
       />
       <h2 className="ml-4 font-semibold text-gray-900">{post.author.name}</h2>
       <p className="ml-4 pt-1 text-sm text-gray-500">
-        {moment(post.createdAt).format('DD MMM, YY')}
+        {moment(post.createdAt).fromNow()}
       </p>
     </div>
 
-    <div className="bg-white p-1 mb-3 flex flex-row ">
+    <div className=" p-1 mb-3 flex flex-row ">
       <div className="text-semibold w-50 w-2/3">
         <h1 className="text-xl font-bold">
           <Link href={`/post/${post.slug}`}>{post.title}</Link>
@@ -51,6 +51,7 @@ const PostCard = ({ post }) => (
       </div>
     </div>
 </div>
+
 
 )
 

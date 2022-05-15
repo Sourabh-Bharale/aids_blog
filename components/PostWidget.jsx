@@ -22,12 +22,12 @@ const PostWidget = ({ categories, slug }) => {
   }, [slug]);
 
   return (
-    <div className="float-right rounded-lg  bg-white  pb-12">
+    <div className=" rounded-lg  bg-white  pb-12">
       <div className="mt-4 mb-8 flex flex-row">
         <div className="rounded-full bg-green-300 pl-1"></div>
         <h1 className="pl-4  text-gray-900">
           {slug ? (
-            <span className="text-bold text-xl ">Recommended Posts</span>
+            <span className="text-bold text-xl ">Related Posts</span>
           ) : (
             <span className="text-bold text-xl ">Recent Posts</span>
           )}
