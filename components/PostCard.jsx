@@ -32,7 +32,7 @@ const PostCard = ({ post }) => (
         </h1>
         <p className="mt-4 mb-8 ">{post.excerpt}</p>
         <Link href={`/post/${post.slug}`}>
-          <span className="cursor-pointer whitespace-nowrap rounded-3xl  bg-gray-100 p-2 m text-center text-sm text-gray-900 shadow-sm hover:bg-gray-200 ">
+          <span className="cursor-pointer submitBtn whitespace-nowrap    p-3  text-center text-sm text-gray-200 shadow-sm hover:bg-gray-200 hover:text-gray-900 ">
             Continue Reading
           </span>
         </Link>

@@ -35,13 +35,13 @@ const PostWidget = ({ categories, slug }) => {
       </div>
       {relatedPosts.map((post, index) => (
         <div className="flex flex-row pb-2">
-          <div>
+          <div className='m-1'>
             <Image
               unoptimized
               loader={graphCMSImageLoader}
               height="50px"
               width="50px"
-              className="rounded-full"
+              className="rounded-full "
               src={post.featuredImage.url}
             />
           </div>
