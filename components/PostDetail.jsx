@@ -1,5 +1,5 @@
 import React from 'react';
-import { RichText } from '@graphcms/rich-text-react-renderer';
+
 import moment from 'moment';
 import Image from 'next/image';
 
@@ -7,8 +7,7 @@ import Image from 'next/image';
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
-   
-    
+
     if (obj) {
       if (obj.bold) {
         modifiedText = (<b key={index}>{text}</b>);
@@ -17,6 +16,7 @@ const PostDetail = ({ post }) => {
       if (obj.italic) {
         modifiedText = (<em key={index}>{text}</em>);
       }
+
       if (obj.underline) {
         modifiedText = (<u key={index}>{text}</u>);
       }

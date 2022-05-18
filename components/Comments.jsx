@@ -24,11 +24,7 @@ const Comments = ({ slug }) => {
             Comments
           </h3>
           </div>
-          {/* <h3 className="text-xl mb-8 font-semibold border-b pb-4">
-            {comments.length}
-            {' '}
-            Comments
-          </h3> */}
+          
             {comments.map((comment, index) => (
               <div key={index} className="border-b  border-gray-100 mb-2">
                 <p >
@@ -43,4 +39,5 @@ const Comments = ({ slug }) => {
     </>
   );
 };
+
 export default Comments;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { submitComment } from '../services';
-// import '../styles/globals.css'
 
 const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false);
