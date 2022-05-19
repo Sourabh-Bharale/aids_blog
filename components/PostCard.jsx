@@ -7,7 +7,7 @@ import { graphCMSImageLoader } from '../util';
 
 const PostCard = ({ post }) => (
  
-  <div className="mt-4 ml-0 mr-0 lg:m-8 lg:mt-4 p-2  card rounded-xl   shadow-gray-500 ">
+  <div className="mt-4 ml-0 mr-0 lg:m-8 lg:mt-4 p-2 sm:ml-1  card rounded-xl   shadow-gray-500 ">
     <div className="flex flex-row  pt-8 pb-2">
       <Image
         unoptimized
