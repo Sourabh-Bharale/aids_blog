@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { graphCMSImageLoader } from '../util';
 
 const Author = ({ author }) => (
-  <div className='flex flex-col  bg-white'>
+  <div className='flex flex-col  '>
     <div className='flex flex-row'>
-    <div className="bg-violet-300 pl-1 rounded-full mr-4"></div>
+    <div className="bg-pink-300 pl-1 rounded-full mr-4"></div>
     <div className="text-gray-900 text-xl ">About author</div>
     </div>
     <div className=" pb-2 mt-8">
