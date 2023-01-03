@@ -21,7 +21,7 @@ const PostDetail = ({ post }) => {
         modifiedText = (<u key={index}>{text}</u>);
       }
     }
-    
+
     switch (type) {
       case 'heading-four':
         return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
@@ -67,11 +67,11 @@ const PostDetail = ({ post }) => {
               </pre>
             </div>
           )
-        
+
         case 'block-quote':
           return <div className='flex flex-row'><div className='p-1 m-1 rounded-lg bg-red-200'></div><h1 key={index} className="text-lg p-1 font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1></div>;
 
-      
+
       default:
         return modifiedText;
     }
@@ -83,8 +83,8 @@ const PostDetail = ({ post }) => {
         <div className="flex flex-row ">
           <Image
             unoptimized
-            width="50px"
-            height="50px"
+            width={50}
+            height={50}
             src={post.author.photo.url}
             alt={post.author.name}
             className="rounded-full "

@@ -39,8 +39,8 @@ const PostWidget = ({ categories, slug }) => {
             <Image
               unoptimized
               loader={graphCMSImageLoader}
-              height="50px"
-              width="50px"
+              height={50}
+              width={50}
               className="rounded-full "
               src={post.featuredImage.url}
             />

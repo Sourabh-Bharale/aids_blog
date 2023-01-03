@@ -6,15 +6,15 @@ import Link from 'next/link';
 import { graphCMSImageLoader } from '../util';
 
 const PostCard = ({ post }) => (
- 
+
   <div className="mt-4 ml-0 mr-0 lg:m-8 lg:mt-4 p-2 sm:ml-1  card rounded-xl   shadow-gray-500 ">
     <div className="flex flex-row  pt-8 pb-2">
       <Image
         unoptimized
         loader={graphCMSImageLoader}
         alt={post.author.name}
-        height="30px"
-        width="30px"
+        height={30}
+        width={30}
         className="rounded-full"
         src={post.author.photo.url}
       />
@@ -42,8 +42,8 @@ const PostCard = ({ post }) => (
           src={post.featuredImage.url}
           loader={graphCMSImageLoader}
           alt={post.title}
-          width="150px"
-          height="150px"
+          width={150}
+          height={150}
           objectFit='contain'
           className='rounded-xl'
         />
