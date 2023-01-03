@@ -14,8 +14,8 @@ const Author = ({ author }) => (
         unoptimized
         loader={graphCMSImageLoader}
         alt={author.name}
-        height="75px"
-        width="75px"
+        height={75}
+        width={75}
         className="align-middle rounded-full"
         src={author.photo.url}
       />
@@ -25,7 +25,7 @@ const Author = ({ author }) => (
       <p className="text-gray-500 pl-2 pt-2 font semibold">{author.bio}</p>
     </div>
   </div>
-  
+
 );
 
 export default Author;

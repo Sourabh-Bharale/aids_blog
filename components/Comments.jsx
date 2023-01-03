@@ -24,8 +24,8 @@ const Comments = ({ slug }) => {
             Comments
           </h3>
           </div>
-          
-            {comments.map((comment, index) => (
+
+            {comments.slice(0).reverse().map((comment, index) => (
               <div key={index} className="border-b  border-gray-100 mb-2">
                 <p >
                   <span className="font-semibold">{comment.name}</span>

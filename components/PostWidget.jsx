@@ -33,7 +33,7 @@ const PostWidget = ({ categories, slug }) => {
           )}
         </h1>
       </div>
-      {relatedPosts.map((post, index) => (
+      {relatedPosts.slice(0).reverse().slice(0).reverse().slice(0).reverse().slice(0).reverse().slice(0).reverse().map((post, index) => (
         <div className="flex flex-row pb-2">
           <div className='m-1'>
             <Image

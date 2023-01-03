@@ -24,15 +24,15 @@ const PostDetail = ({ post }) => {
 
     switch (type) {
       case 'heading-four':
-        return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
+        return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.slice(0).reverse().map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
       case 'heading-three':
-        return <h3 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
+        return <h3 key={index} className="text-xl font-semibold mb-4">{modifiedText.slice(0).reverse().map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
       case 'heading-two':
-        return <h2 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h2>;
+        return <h2 key={index} className="text-xl font-semibold mb-4">{modifiedText.slice(0).reverse().map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h2>;
       case 'heading-one':
-        return <div className='bg-gradient-to-r from-gray-200 to to-gray-100  rounded-xl p-2 pb-0'><h1 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1></div>;
+        return <div className='bg-gradient-to-r from-gray-200 to to-gray-100  rounded-xl p-2 pb-0'><h1 key={index} className="text-xl font-semibold mb-4">{modifiedText.slice(0).reverse().map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1></div>;
       case 'paragraph':
-        return <p key={index} className="mb-8  rounded-lg p-2">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
+        return <p key={index} className="mb-8  rounded-lg p-2">{modifiedText.slice(0).reverse().map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
       case 'image':
         return (
           <img
@@ -59,7 +59,7 @@ const PostDetail = ({ post }) => {
                     key={index}
                     className="text-md mb-4 text-white"
                   >
-                    {modifiedText.map((item, i) => (
+                    {modifiedText.slice(0).reverse().map((item, i) => (
                       <React.Fragment key={i}>{item}</React.Fragment>
                     ))}
                   </code>
@@ -69,7 +69,7 @@ const PostDetail = ({ post }) => {
           )
 
         case 'block-quote':
-          return <div className='flex flex-row'><div className='p-1 m-1 rounded-lg bg-red-200'></div><h1 key={index} className="text-lg p-1 font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1></div>;
+          return <div className='flex flex-row'><div className='p-1 m-1 rounded-lg bg-red-200'></div><h1 key={index} className="text-lg p-1 font-semibold mb-4">{modifiedText.slice(0).reverse().map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1></div>;
 
 
       default:
@@ -129,8 +129,8 @@ const PostDetail = ({ post }) => {
           />
         </div>
         <div className="bg-white rounded-xl">
-        {post.content.raw.children.map((typeObj, index) => {
-            const children = typeObj.children.map((item, itemindex) => getContentFragment(itemindex, item.text, item));
+        {post.content.raw.children.slice(0).reverse().map((typeObj, index) => {
+            const children = typeObj.children.slice(0).reverse().map((item, itemindex) => getContentFragment(itemindex, item.text, item));
 
             return getContentFragment(index, children, typeObj, typeObj.type);
           })}
