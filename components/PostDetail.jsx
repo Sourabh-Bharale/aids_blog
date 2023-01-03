@@ -129,8 +129,8 @@ const PostDetail = ({ post }) => {
           />
         </div>
         <div className="bg-white rounded-xl">
-        {post.content.raw.children.slice(0).reverse().map((typeObj, index) => {
-            const children = typeObj.children.slice(0).reverse().map((item, itemindex) => getContentFragment(itemindex, item.text, item));
+        {post.content.raw.children.map((typeObj, index) => {
+            const children = typeObj.children.map((item, itemindex) => getContentFragment(itemindex, item.text, item));
 
             return getContentFragment(index, children, typeObj, typeObj.type);
           })}
